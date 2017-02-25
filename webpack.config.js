@@ -40,6 +40,12 @@ if (node_env === 'production') {
   );
 }
 
+const esLintOptions = {
+  configFile: './src/.eslintrc',
+  failOnWarning: false,
+  failOnError: true          
+};
+
 module.exports = {
   devtool: node_env === 'production' ? undefined : 'cheap-module-source-map',
   context: __dirname,
@@ -63,14 +69,26 @@ module.exports = {
     rules: [
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /.*\.CSS\.js$/,
-        loader: 'inline-css-loader!babel-loader!eslint-loader',
+        use: [
+          { loader: 'inline-css-loader' }, 
+          { loader: 'babel-loader' }, 
+          {
+            loader: 'eslint-loader',
+            options: esLintOptions,
+          }
+        ],
         exclude: /(node_modules)/,
         include: /src/,
       },
       { test: /^((?!CSS\.js$).)*\.jsx?$/,
         exclude: /(node_modules)/,
         include: /src/,
-        loader: 'babel-loader!eslint-loader',
+        use: [{
+          loader: 'babel-loader',
+        }, {
+          loader: 'eslint-loader',
+          options: esLintOptions,
+        }],
       },
       { test: /\.(jpg|png|gif)$/, loader: 'file!image' },
       { test: /\.svg/, loader: 'url-loader', include: /node_modules\/font-awesome/ },
