@@ -6,13 +6,13 @@ System Setup
 
 * install NodeJS v6: https://nodejs.org/en/download/
 
-## Getting started with blinkenrocket-webedit-react
+Getting started
 
-    # Clone the Git repo:
+    # Clone the Git repo
     git clone https://github.com/ChrisVeigl/blinkenrocket-webedit-react
 
     # Install dependencies and build the project
-    blinkerocket-webedit-react
+    cd blinkerocket-webedit-react
     npm install
     npm run build
 
