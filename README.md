@@ -4,7 +4,7 @@
 
 System Setup
 
-* install node: https://nodejs.org/en/download/
+* install NodeJS v6: https://nodejs.org/en/download/
 
 ## Getting started with blinkenrocket-webedit-react
 
